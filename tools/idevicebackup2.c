@@ -2301,6 +2301,8 @@ checkpoint:
 			PRINT_VERBOSE(1, "Starting Restore...\n");
 
 			opts = plist_new_dict();
+			plist_dict_set_item(opts, "ShouldPerformSplitRestore", plist_new_bool(1));
+			plist_dict_set_item(opts, "BackupAfterMigrate", plist_new_bool(0));
 			plist_dict_set_item(opts, "RestoreSystemFiles", plist_new_bool(cmd_flags & CMD_FLAG_RESTORE_SYSTEM_FILES));
 			PRINT_VERBOSE(1, "Restoring system files: %s\n", (cmd_flags & CMD_FLAG_RESTORE_SYSTEM_FILES ? "Yes":"No"));
 			if (cmd_flags & CMD_FLAG_RESTORE_NO_REBOOT)
